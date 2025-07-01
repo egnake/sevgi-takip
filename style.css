@@ -118,7 +118,7 @@ li {
 }
 
 .heart {
-  position: middle;
+  position: absolute , middle;
   color: #f8b8c4;
   font-size: 24px;
   animation: fall 5s linear forwards;
