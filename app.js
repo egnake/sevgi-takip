@@ -73,7 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
   gunlukIltifatGoster();
   sabahHatirlatmasi();
   updateHedefBar();
-  updateMesaj(); // 👈 Bu satır eklendi
+  updateMesaj(); 
+
+  // Assign mesajKaydet to a button's onclick event
+  const mesajKaydetButton = document.getElementById("mesajKaydetButton");
+  if (mesajKaydetButton) {
+    mesajKaydetButton.onclick = mesajKaydet;
+  }
 
   // Hedef inputuna mevcut hedefi yaz
   const input = document.getElementById("suHedefi");
@@ -134,7 +140,6 @@ onSnapshot(collection(db, "kayitlar"), (snapshot) => {
   document.getElementById("toplam-su").innerText = "Veri alınamadı";
   document.getElementById("haftalik-rapor").innerText = "Veri alınamadı";
 });
-
 function mesajKaydet() {
   const mesaj = document.getElementById('sevgiliMesaji').value.trim();
   if (!mesaj) return alert("Lütfen bir mesaj girin.");
@@ -142,13 +147,16 @@ function mesajKaydet() {
   addDoc(collection(db, "mesajlar"), {
     metin: mesaj,
     tarih: new Date()
+  }).then(() => {
+    console.log("Mesaj başarıyla eklendi!");
+    document.getElementById("kayitliMesaj").innerText = `💌 ${mesaj}`;
+  }).catch((err) => {
+    console.error("HATA: Mesaj eklenemedi", err);
+    alert("Mesaj kaydedilemedi. Lütfen Firebase kurulumunu kontrol et.");
   });
-
-  // Yazılan mesajı anında göster
-  document.getElementById("kayitliMesaj").innerText = `💌 ${mesaj}`;
 }
 
-// Mesajları gerçek zamanlı dinle
+// Gerçek zamanlı mesaj dinleyici
 onSnapshot(collection(db, "mesajlar"), (snapshot) => {
   let enSonMesaj = "Henüz mesaj yok 💗";
 
