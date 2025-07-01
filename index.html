@@ -25,6 +25,7 @@
       <input type="number" id="suMiktari" placeholder="200" />
       <button onclick="suEkle()">Kaydet</button>
     </div>
+    <div id="heart-container"></div>
 
     <!-- Günlük Su Hedefi -->
     <div class="card">
@@ -35,6 +36,13 @@
         <div id="progress" class="progress"></div>
       </div>
       <p id="hedefDurumu">Yükleniyor...</p>
+    </div>
+
+    <div class="card">
+      <h2>Sevgilime Mesaj</h2>
+      <textarea id="sevgiliMesaji" placeholder="Bugün sana özel ne anlatmak isterdin?"></textarea>
+      <button onclick="mesajKaydet()">Kaydet</button>
+      <p id="kayitliMesaj">Yükleniyor...</p>
     </div>
 
     <!-- Günlük Su Tüketimi -->
