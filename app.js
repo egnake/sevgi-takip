@@ -61,14 +61,18 @@ const iltifatlar = [
   "Seninle olmak, hayatımın en güzel anı.",
   "Seninle her şey daha güzel, seninle her şey daha anlamlı.",
   "Seninle her anım çok özel, seninle her anım çok değerli.",
-  "Seninle olmak, hayatımın en güzel anı.",
   "Ben sensiz bir hayat düşünemiyorum.",
   "Birlikte başarabileceğimiz her şey için buradayım.",
   "Birlikte olalım,sımsıkı sarılalım, hayatı birlikte yaşayalım.",
   "Birbirimize destek olalım, birlikte her zorluğun üstesinden gelelim.",
+  "Birlikte her anı paylaşalım, birlikte her anı yaşayalım.",
+  "Seninle her anı paylaşmak istiyorum.",
+  "Seninle her anı yaşamak istiyorum.",
+  "Sana çok değer veriyorum, sen benim için çok özelsin.",
+  "Beyaz güller gibi saf ve güzel bir kalbin var.",
+  "Börtü böceklerin arasında açmış en güzel o çiçeksin,beyaz lalemsin❤️❤️❤️",
   "Kendine iyi bak, çünkü sen çok kıymetlisin ❤️"
 ];
-
 
 function gunlukIltifatGoster() {
   const rastgele = Math.floor(Math.random() * iltifatlar.length);
