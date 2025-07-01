@@ -26,7 +26,16 @@ h1 {
   color: #d63384;
   margin-bottom: 25px;
 }
-
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 60px;
+  font-size: 14px;
+}
 .card {
   background: #fff0f6;
   padding: 20px;
@@ -125,6 +134,6 @@ li {
 }
 
 @keyframes fall {
-  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  0% { transform: translateY(100px) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }
