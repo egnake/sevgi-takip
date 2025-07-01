@@ -69,15 +69,30 @@ function sabahHatirlatmasi() {
     alert("🌅 Günaydın! Bugün başlamadan önce bir bardak su içmeni istedim 💧");
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   gunlukIltifatGoster();
   sabahHatirlatmasi();
+  updateHedefBar();
+  updateMesaj(); // 👈 Bu satır eklendi
 
   // Hedef inputuna mevcut hedefi yaz
   const input = document.getElementById("suHedefi");
   if (input) input.value = gunlukHedef;
 });
+function kalpOlustur() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerText = '❤️';
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  document.getElementById("heart-container").appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+// Her 10 saniyede bir kalp düşsün
+setInterval(kalpOlustur, 10000);
 
 let toplamSu = 0;
 
@@ -107,6 +122,7 @@ onSnapshot(collection(db, "kayitlar"), (snapshot) => {
 
     const li = document.createElement("li");
     li.textContent = itemText;
+    li.classList.add("fade-in");
     liste.appendChild(li);
   });
 
@@ -118,6 +134,23 @@ onSnapshot(collection(db, "kayitlar"), (snapshot) => {
   document.getElementById("toplam-su").innerText = "Veri alınamadı";
   document.getElementById("haftalik-rapor").innerText = "Veri alınamadı";
 });
+
+let mesajDB = "";
+
+function mesajKaydet() {
+  const mesaj = document.getElementById('sevgiliMesaji').value.trim();
+  if (!mesaj) return alert("Lütfen bir mesaj girin.");
+  mesajDB = mesaj;
+  localStorage.setItem("sevgiliMesaj", mesaj);
+  updateMesaj();
+}
+
+function updateMesaj() {
+  const mesajEl = document.getElementById("kayitliMesaj");
+  if (!mesajEl) return;
+  const mesaj = localStorage.getItem("sevgiliMesaj") || "Henüz mesaj yok 💗";
+  mesajEl.innerText = mesaj;
+}
 
 function haftalikSuHesapla(kayitlar) {
   let toplam = 0;
