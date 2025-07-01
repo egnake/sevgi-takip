@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sevgi Takibi 💗</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Yemek & Su Takibi 💧🍽️</h1>
+
+    <!-- Yemek Ekle -->
+    <div class="card">
+      <h2>Yemek Ekle</h2>
+      <input type="text" id="yemekAdi" placeholder="Yemek adı (örn: Salata)" />
+      <button onclick="yemekEkle()">Kaydet</button>
+    </div>
+
+    <!-- Su Ekle -->
+    <div class="card">
+      <h2>Su Ekle (ml)</h2>
+      <input type="number" id="suMiktari" placeholder="200" />
+      <button onclick="suEkle()">Kaydet</button>
+    </div>
+
+    <!-- Günlük Su Hedefi -->
+    <div class="card">
+      <h2>Günlük Su Hedefi</h2>
+      <input type="number" id="suHedefi" placeholder="2000" />
+      <button onclick="suHedefiniKaydet()">Kaydet</button>
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+      <p id="hedefDurumu">Yükleniyor...</p>
+    </div>
+
+    <!-- Günlük Su Tüketimi -->
+    <div class="card">
+      <h2>Günlük Su Tüketimi</h2>
+      <p id="toplam-su">Yükleniyor...</p>
+    </div>
+
+    <!-- Haftalık Rapor -->
+    <div class="card">
+      <h2>Haftalık Rapor</h2>
+      <p id="haftalik-rapor">Yükleniyor...</p>
+    </div>
+
+    <!-- Günlük İltifat -->
+    <div class="card">
+      <h2>Günlük İltifat</h2>
+      <p id="iltifat">Yükleniyor...</p>
+    </div>
+
+    <!-- Kayıtlar -->
+    <div class="card">
+      <h2>Kayıtlar</h2>
+      <ul id="kayitListesi"></ul>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
