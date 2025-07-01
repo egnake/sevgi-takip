@@ -92,7 +92,7 @@ function kalpOlustur() {
 }
 
 // Her 10 saniyede bir kalp düşsün
-setInterval(kalpOlustur, 1900);
+setInterval(kalpOlustur, 10000);
 
 let toplamSu = 0;
 
@@ -135,22 +135,31 @@ onSnapshot(collection(db, "kayitlar"), (snapshot) => {
   document.getElementById("haftalik-rapor").innerText = "Veri alınamadı";
 });
 
-let mesajDB = "";
-
 function mesajKaydet() {
   const mesaj = document.getElementById('sevgiliMesaji').value.trim();
   if (!mesaj) return alert("Lütfen bir mesaj girin.");
-  mesajDB = mesaj;
-  localStorage.setItem("sevgiliMesaj", mesaj);
-  updateMesaj();
+
+  addDoc(collection(db, "mesajlar"), {
+    metin: mesaj,
+    tarih: new Date()
+  });
+
+  // Yazılan mesajı anında göster
+  document.getElementById("kayitliMesaj").innerText = `💌 ${mesaj}`;
 }
 
-function updateMesaj() {
+// Mesajları gerçek zamanlı dinle
+onSnapshot(collection(db, "mesajlar"), (snapshot) => {
+  let enSonMesaj = "Henüz mesaj yok 💗";
+
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    enSonMesaj = `💌 ${data.metin} - ${new Date(data.tarih.seconds * 1000).toLocaleTimeString()}`;
+  });
+
   const mesajEl = document.getElementById("kayitliMesaj");
-  if (!mesajEl) return;
-  const mesaj = localStorage.getItem("sevgiliMesaj") || "Henüz mesaj yok 💗";
-  mesajEl.innerText = mesaj;
-}
+  if (mesajEl) mesajEl.innerText = enSonMesaj;
+});
 
 function haftalikSuHesapla(kayitlar) {
   let toplam = 0;
