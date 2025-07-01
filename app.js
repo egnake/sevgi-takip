@@ -92,7 +92,7 @@ function kalpOlustur() {
 }
 
 // Her 10 saniyede bir kalp düşsün
-setInterval(kalpOlustur, 1);
+setInterval(kalpOlustur, 10);
 
 let toplamSu = 0;
 
