@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gunlukIltifatGoster();
   sabahHatirlatmasi();
   updateHedefBar();
-  updateMesaj(); 
+  updateMesaj(); // 👈 Bu satır eklendi
 
   // Hedef inputuna mevcut hedefi yaz
   const input = document.getElementById("suHedefi");
@@ -92,7 +92,7 @@ function kalpOlustur() {
 }
 
 // Her 10 saniyede bir kalp düşsün
-setInterval(kalpOlustur, 1000);
+setInterval(kalpOlustur, 1900);
 
 let toplamSu = 0;
 
